@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/users');
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 9000;
 const MONGODB_URI = process.env.MONGODB_URL || `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.dzu3t.mongodb.net/img-repo?retryWrites=true&w=majority`;
 
 app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true, 
